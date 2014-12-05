@@ -11,7 +11,7 @@ public class RType extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
         setLocationRelativeTo(null);
-        setTitle("R - Type");
+        setTitle("Le jeu qui tue");
         setResizable(false);
         setVisible(true);
     }

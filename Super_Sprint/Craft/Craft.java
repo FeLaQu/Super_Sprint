@@ -75,6 +75,15 @@ public class Craft {
         if (key == KeyEvent.VK_DOWN) {
             ddy = 1;
         }
+        
+        if (key == KeyEvent.VK_R){
+        	x=10;
+        	y=10;
+        	dx=0;
+        	dy=0;
+        	ddx=0;
+        	ddy=0;
+        }
     }
 
     public void keyReleased(KeyEvent e) {
@@ -82,18 +91,22 @@ public class Craft {
 
         if (key == KeyEvent.VK_LEFT) {
             ddx = 0;
+            dx=0;
         }
 
         if (key == KeyEvent.VK_RIGHT) {
             ddx = 0;
+            dx=0;
         }
 
         if (key == KeyEvent.VK_UP) {
             ddy = 0;
+            dy=0;
         }
 
         if (key == KeyEvent.VK_DOWN) {
             ddy = 0;
+            dy=0;
         }
     }
 }

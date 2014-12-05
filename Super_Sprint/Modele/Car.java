@@ -11,8 +11,51 @@ public class Car {
 	private float maniability ; //IDEM
 	
 	
-	public Car() {
+	public Car(int id, int[] position) {
+		this.ID = id ;
+		this.position = position ;
+		this.speed = new int[] {0,0} ;
+		this.acceleration = new int[] {0,0} ;
+		// Two cars for now, just for the idea
+		if (id == 1){
+			this.max_speed = 2;
+			this.max_acceleration = 1;
+			this.maniability = 1;
+		}
+		if (id == 2){
+			this.max_speed = 1;
+			this.max_acceleration = 2;
+			this.maniability = 2;
+		}
+
 		
 	}
+	
+	public int getID(){
+		return this.ID ;
+	}
+	
+	public int[] getPosition(){
+		return this.position ;
+	}
+	
+	public int[] getSpeed(){
+		return this.speed ;
+	}
+	
+	public int[] getAcceleration(){
+		return this.acceleration ;
+	}
+	
+	public int getMax_speed(){
+		return this.max_speed ;
+	}
+	
+	public int getMax_acceleration(){
+		return this.max_acceleration ;
+	}
 
+	public float getManiability(){
+		return this.maniability ;
+	}
 }
