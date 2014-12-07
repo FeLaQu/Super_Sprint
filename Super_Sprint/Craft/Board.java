@@ -27,7 +27,7 @@ public class Board extends JPanel implements ActionListener {
 
         craft = new Craft();
 
-        timer = new Timer(5, this);
+        timer = new Timer(1, this);
         timer.start();
     }
 
@@ -35,11 +35,13 @@ public class Board extends JPanel implements ActionListener {
     public void paint(Graphics g) {
         super.paint(g);
 
+
         Graphics2D g2d = (Graphics2D)g;
-        g2d.drawImage(craft.getImage(), craft.getX(), craft.getY(), this);
+        g2d.drawImage(craft.getImage(), craft.getX(), craft.getY(), 100,50, this);
 
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
+        
     }
 
 

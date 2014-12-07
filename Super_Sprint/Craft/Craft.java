@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
+import java.awt.geom.AffineTransform;
 
 public class Craft {
 
@@ -33,15 +34,18 @@ public class Craft {
     	if (dx<-2){
     		dx=-2;
     	}    	
+    	dy+= ddy;
     	if (dy>2){
     		dy=2;
     	}
     	if (dy<-2){
     		dy=-2;
     	}
-    	dy+= ddy;
+
         x += dx;
         y += dy;
+        
+
     }
 
     public int getX() {

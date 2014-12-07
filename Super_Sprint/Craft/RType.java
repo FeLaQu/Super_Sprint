@@ -14,6 +14,7 @@ public class RType extends JFrame {
         setTitle("Le jeu qui tue");
         setResizable(false);
         setVisible(true);
+        setAlwaysOnTop(true);
     }
 
     public static void main(String[] args) {
