@@ -27,7 +27,7 @@ public class Board extends JPanel implements ActionListener {
 
         craft = new Craft();
 
-        timer = new Timer(1, this);
+        timer = new Timer(5, this);
         timer.start();
     }
 

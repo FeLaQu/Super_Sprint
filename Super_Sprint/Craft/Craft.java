@@ -8,42 +8,109 @@ import java.awt.geom.AffineTransform;
 
 public class Craft {
 
-    private String craft = "voiture.png";
+    private String craft = "C://voiture_h.png";
 
     private int dx, ddx;
     private int dy, ddy;
+    private int vmax=5; int a=1; 
     private int x;
     private int y;
     private Image image;
 
     public Craft() {
-        ImageIcon ii = new ImageIcon("C:\\voiture.png");
+        ImageIcon ii = new ImageIcon("C://voiture_h.png");
         image = ii.getImage();
-        x = 0;
-        y = 0;
+        x = 550;
+        y = 250;
         dx=0;
         dy=0;        
     }
 
 
-    public void move() {    	
-    	dx+= ddx;
-    	if (dx>2) {
-    		dx=2;
-    	}
-    	if (dx<-2){
-    		dx=-2;
-    	}    	
-    	dy+= ddy;
-    	if (dy>2){
-    		dy=2;
-    	}
-    	if (dy<-2){
-    		dy=-2;
-    	}
-
+    public void move() {  
+    	
+    	if (ddx==1)
+    		dx += a;
+    	
+    	if (ddx==0 && dx>0)
+    		dx -= a;
+    	
+    	if (ddx==-1)
+    		dx -=a;
+    	
+    	if (ddx==0 && dx<0)
+    		dx +=a;
+    	
+    	if (ddy==1)
+    		dy += a;
+    	
+    	if (ddy==0 && dy>0)
+    		dy -= a;
+    	
+    	if (ddy==-1)
+    		dy -=a;
+    	
+    	if (ddy==0 && dy<0)
+    		dy +=a;	
+    	
+    	
+    	
+    	if (dx>vmax) 
+    		dx=vmax;
+    	
+    	if (dx<-vmax)
+    		dx=-vmax;
+    	    	
+    	if (dy>vmax)
+    		dy=vmax;
+    	
+    	if (dy<-vmax)
+    		dy=-vmax;
+    	
+    	
         x += dx;
         y += dy;
+        
+        if (dx>0){
+        	if(dy>0){
+        		ImageIcon ii = new ImageIcon("C://voiture_bd.png");
+        		image = ii.getImage();
+        	}
+        	if(dy<0){
+        		ImageIcon ii = new ImageIcon("C://voiture_hd.png");
+        		image = ii.getImage();
+        	}
+        	if(dy==0){
+        		ImageIcon ii = new ImageIcon("C://voiture_d.png");
+        		image = ii.getImage();
+        	}
+        }
+        
+        if (dx<0){
+        	if(dy>0){
+        		ImageIcon ii = new ImageIcon("C://voiture_bg.png");
+        		image = ii.getImage();
+        	}
+        	if(dy<0){
+        		ImageIcon ii = new ImageIcon("C://voiture_hg.png");
+        		image = ii.getImage();
+        	}
+        	if(dy==0){
+        		ImageIcon ii = new ImageIcon("C://voiture_g.png");
+        		image = ii.getImage();
+        	}
+        }
+        
+        if (dx==0){
+        	if(dy>0){
+        		ImageIcon ii = new ImageIcon("C://voiture_b.png");
+        		image = ii.getImage();
+        	}
+        	if(dy<0){
+        		ImageIcon ii = new ImageIcon("C://voiture_h.png");
+        		image = ii.getImage();
+        	}        	
+        } 
         
 
     }
@@ -81,8 +148,8 @@ public class Craft {
         }
         
         if (key == KeyEvent.VK_R){
-        	x=10;
-        	y=10;
+        	x=550;
+        	y=250;
         	dx=0;
         	dy=0;
         	ddx=0;
@@ -94,23 +161,19 @@ public class Craft {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
-            ddx = 0;
-            dx=0;
+            ddx = 0;            
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-            ddx = 0;
-            dx=0;
+            ddx = 0;            
         }
 
         if (key == KeyEvent.VK_UP) {
-            ddy = 0;
-            dy=0;
+            ddy = 0;            
         }
 
         if (key == KeyEvent.VK_DOWN) {
-            ddy = 0;
-            dy=0;
+            ddy = 0;            
         }
     }
 }
