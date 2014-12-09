@@ -1,4 +1,4 @@
-package Controleur;
+
 
 public class IA {
 

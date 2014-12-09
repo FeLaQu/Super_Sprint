@@ -1,4 +1,3 @@
-package Vue;
 
 public class VCircuit {
 

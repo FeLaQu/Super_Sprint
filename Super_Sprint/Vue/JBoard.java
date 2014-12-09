@@ -1,4 +1,4 @@
-package Vue;
+
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -11,9 +11,9 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JPanel;
 
-public class Board extends JPanel implements ActionListener {
+public class JBoard extends JPanel implements ActionListener {
 
-	public Board() {
+	public JBoard() {
 		
 	}
 

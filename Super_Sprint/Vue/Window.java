@@ -1,13 +1,11 @@
-package Vue;
-import javax.swing.JFrame ;
 
-import Vue.Board;
+import javax.swing.JFrame ;
 
 
 public class Window extends JFrame {
 
 	public Window() {
-		add(new Board());
+		add(new JBoard());
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(800, 600);

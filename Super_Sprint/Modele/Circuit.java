@@ -1,6 +1,6 @@
-package Modele;
 
-public class Circuit extends Vue.VCircuit{
+
+public class Circuit extends VCircuit{
 
 	public Circuit() {
 		// TODO Auto-generated constructor stub

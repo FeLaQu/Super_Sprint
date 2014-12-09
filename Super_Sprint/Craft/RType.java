@@ -1,4 +1,4 @@
-package Craft;
+
 
 import javax.swing.JFrame;
 
@@ -6,7 +6,7 @@ public class RType extends JFrame {
 
     public RType() {
 
-        add(new Board());
+        add(new JBoard());
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
