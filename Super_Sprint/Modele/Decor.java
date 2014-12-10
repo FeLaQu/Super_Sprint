@@ -1,3 +1,7 @@
+package Modele;
+
+import Vue.VDecor;
+
 
 public class Decor extends VDecor{
 

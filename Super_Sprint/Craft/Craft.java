@@ -1,3 +1,5 @@
+package Craft;
+
 
 
 import java.awt.Image;

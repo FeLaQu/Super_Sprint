@@ -1,3 +1,7 @@
+package Modele;
+
+import Vue.VCircuit;
+
 
 
 public class Circuit extends VCircuit{

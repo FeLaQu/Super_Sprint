@@ -1,3 +1,7 @@
+package Modele;
+
+import Vue.VCar;
+
 
 
 public class Car extends VCar{
