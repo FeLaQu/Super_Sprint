@@ -38,7 +38,7 @@ public class Board extends JPanel implements ActionListener {
 
 
         Graphics2D g2d = (Graphics2D)g;
-        g2d.drawImage(craft.getImage(), craft.getX(), craft.getY(), 100,50, this);
+        g2d.drawImage(craft.getImage(), craft.getX(), craft.getY(),this);
 
         Toolkit.getDefaultToolkit().sync();
         g.dispose();

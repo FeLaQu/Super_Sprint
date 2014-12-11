@@ -1,9 +1,6 @@
 package Craft;
 
-
 import javax.swing.JFrame;
-
-import Vue.JBoard;
  
 public class RType extends JFrame {
 
