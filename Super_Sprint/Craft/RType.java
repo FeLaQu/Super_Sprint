@@ -9,7 +9,7 @@ public class RType extends JFrame {
 
     public RType() {
 
-        add(new JBoard());
+        add(new Board());
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1300, 700);
