@@ -10,17 +10,12 @@ public class Window extends JFrame {
 		add(new JBoard());
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(800, 600);
+		setSize(1200, 700);
 		setLocationRelativeTo(null);
 		setTitle("Le jeu qui tue, le vrai");
 		setResizable(false);
 		setVisible(true);
 		setAlwaysOnTop(false);
 	}
-
-	public static void main(String[] args) {
-		new Window();        
-
-	}
-
+	
 }
