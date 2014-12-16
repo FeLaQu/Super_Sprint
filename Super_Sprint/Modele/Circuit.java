@@ -11,8 +11,12 @@ public class Circuit extends VCircuit{
 	
 	
 	
-	public Circuit() {
-		// TODO Auto-generated constructor stub
+	
+	public Circuit(int id) {
+		if (id==1){			// we import here the matrix for the circuit number 1
+			// to do : import matrix of graylevel circuit
+			
+		}
 	}
 
 }
