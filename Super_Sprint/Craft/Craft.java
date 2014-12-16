@@ -22,8 +22,10 @@ public class Craft {
     public Craft() {
         ImageIcon ii = new ImageIcon("C://voiture_h.png");
         image = ii.getImage();
+     // The initial place of the car
         x = 550;
         y = 250;
+        // The initial speed
         dx=0;
         dy=0;        
     }
@@ -44,10 +46,10 @@ public class Craft {
     		dx +=a;
     	
     	if (ddy==1)
-    		dy += a;
+    		dy +=a;
     	
     	if (ddy==0 && dy>0)
-    		dy -= a;
+    		dy -=a;
     	
     	if (ddy==-1)
     		dy -=a;
@@ -113,6 +115,17 @@ public class Craft {
         		image = ii.getImage();
         	}        	
         } 
+        
+        if (x<=0 || x>=1300){
+        	if(dy>0){
+        		ImageIcon ii = new ImageIcon("C://voiture_b.png");
+        		image = ii.getImage();
+        	}
+        	if(dy<0){
+        		ImageIcon ii = new ImageIcon("C://voiture_h.png");
+        		image = ii.getImage();
+        	}        	
+        }
         
 
     }
