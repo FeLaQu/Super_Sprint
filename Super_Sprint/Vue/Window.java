@@ -17,10 +17,5 @@ public class Window extends JFrame {
 		setVisible(true);
 		setAlwaysOnTop(false);
 	}
-
-	public static void main(String[] args) {
-		new Window();        
-
-	}
-
+	
 }
