@@ -59,7 +59,10 @@ public class Board extends JPanel implements ActionListener {
         }
 
         public void keyPressed(KeyEvent e) {
+//        	if (craft.getListenDecesion() == 1)
+//        	{
             craft.keyPressed(e);
+//        	}
         }
     }
 
