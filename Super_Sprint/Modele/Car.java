@@ -12,7 +12,7 @@ public class Car extends VCar{
 	private int[] position ; //A 2x1 vector for the current position
 	private int[] speed ;  //IDEM 
 	private int[] acceleration ; // IDEM
-	private int max_speed ;		// C	haracteristic of the car
+	private int max_speed ;		// Characteristic of the car
 	private int max_acceleration ;	//IDEM
 	private float maniability ; //IDEM
 	
