@@ -1,13 +1,22 @@
 package Vue;
 
 
-import javax.swing.JFrame ;
+import java.awt.Graphics;
+
+import javax.swing.JFrame;
+
+import Controleur.Course;
+import Modele.Car;
 
 
 public class Window extends JFrame {
+	
+	private JBoard  board;
 
-	public Window() {
-		add(new JBoard());
+	public Window(Car car, Course course) {
+		
+		board = new JBoard(car, course);
+		add(board);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1200, 700);
@@ -16,6 +25,10 @@ public class Window extends JFrame {
 		setResizable(false);
 		setVisible(true);
 		setAlwaysOnTop(false);
+	}
+	
+	public void repaint(Graphics g){
+		board.paint(g);
 	}
 	
 }

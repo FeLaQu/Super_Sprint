@@ -1,18 +1,13 @@
 package Modele;
 
 
-
-import Vue.VCar;
-
-
-
-public class Car extends VCar{
+public class Car {
 
 	private int ID ;		//Identification of the car
 	private int[] position ; //A 2x1 vector for the current position
 	private int[] speed ;  //IDEM 
 	private int[] acceleration ; // IDEM
-	private int max_speed ;		// C	haracteristic of the car
+	private int max_speed ;		// Characteristic of the car
 	private int max_acceleration ;	//IDEM
 	private float maniability ; //IDEM
 	
@@ -66,54 +61,54 @@ public class Car extends VCar{
 	}
 	
 	public void setPosition(int x, int y){
-		position[1]=x;
-		position[2]=y;
+		position[0]=x;
+		position[1]=y;
 	}
 	
 	public void setSpeed(int x, int y){
-		speed[1]=x;
-		speed[2]=y;
+		speed[0]=x;
+		speed[1]=y;
 	}
 
 	public void move(int ddx, int ddy){
 		if (ddx==1)
-    		speed[1] += max_acceleration;
+    		speed[0] += max_acceleration;
     	
-    	if (ddx==0 && speed[1]>0)
-    		speed[1] -= max_acceleration;
+    	if (ddx==0 && speed[0]>0)
+    		speed[0] -= max_acceleration;
     	
     	if (ddx==-1)
-    		speed[1] -= max_acceleration;
+    		speed[0] -= max_acceleration;
     	
-    	if (ddx==0 && speed[1]<0)
-    		speed[1] += max_acceleration;
+    	if (ddx==0 && speed[0]<0)
+    		speed[0] += max_acceleration;
     	
     	if (ddy==1)
-    		speed[2] += max_acceleration;
+    		speed[1] += max_acceleration;
     	
-    	if (ddy==0 && speed[2]>0)
-    		speed[2] -= max_acceleration;
+    	if (ddy==0 && speed[1]>0)
+    		speed[1] -= max_acceleration;
     	
     	if (ddy==-1)
-    		speed[2] -= max_acceleration;
+    		speed[1] -= max_acceleration;
     	
-    	if (ddy==0 && speed[2]<0)
-    		speed[2] += max_acceleration;	
+    	if (ddy==0 && speed[1]<0)
+    		speed[1] += max_acceleration;	
     	
-    	if (speed[1]>max_speed) 
+    	if (speed[0]>max_speed) 
+    		speed[0]=max_speed;
+    	
+    	if (speed[0]<-max_speed)
+    		speed[0]=-max_speed;
+    	    	
+    	if (speed[1]>max_speed)
     		speed[1]=max_speed;
     	
     	if (speed[1]<-max_speed)
     		speed[1]=-max_speed;
-    	    	
-    	if (speed[2]>max_speed)
-    		speed[2]=max_speed;
     	
-    	if (speed[2]<-max_speed)
-    		speed[2]=-max_speed;
-    	
-    	position[1] += speed[1];
-        position[2] += speed[2];
+    	position[0] += speed[0];
+        position[1] += speed[1];
 	}      
 	
 	
