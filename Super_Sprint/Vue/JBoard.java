@@ -7,10 +7,12 @@ import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import Controleur.Course;
 import Modele.Car;
+import Modele.Circuit;
 
 
 public class JBoard extends JPanel {
@@ -18,17 +20,20 @@ public class JBoard extends JPanel {
 	private VCar view_car;
 	private VCircuit view_circuit;
 	private Course course;
+	private Car car;
 	
-    public JBoard(Car car, Course course) {
+    public JBoard(Car car, Circuit circuit, Course course) {
     	
     	addKeyListener(new TAdapter());
         setFocusable(true);
         setBackground(Color.WHITE);
-        setDoubleBuffered(true);
-        
+        setDoubleBuffered(true);     
+              
+           
         this.view_car= new VCar(car);
-        this.view_circuit= new VCircuit();
+        this.view_circuit= new VCircuit(circuit);
         this.course=course;
+        this.car=car;
     }
 
 
@@ -37,7 +42,7 @@ public class JBoard extends JPanel {
 
         Graphics2D g2d = (Graphics2D)g;
         
-      // g2d.drawImage(view_circuit.getImage(), 0,0, null);
+        g2d.drawImage(view_circuit.getImage(), 0,0, null);
         
         this.view_car.rotate();        
         g2d.drawImage(view_car.getImage(), view_car.getX(), view_car.getY(),this);                                        
@@ -89,12 +94,13 @@ public class JBoard extends JPanel {
                 course.setddy(1);
             }
             
-           /* if (key == KeyEvent.VK_R){
-            	car.setPosition(550,250);	        	
+            if (key == KeyEvent.VK_R){
+            	car.setPosition(600,120);	        	
             	car.setSpeed(0,0);
-            	ddx=0;
-            	ddy=0;
-            }*/
+            	course.setddx(0);
+            	course.setddy(0);
+            	view_car.setImage(new ImageIcon("C://voiture_g.png").getImage());
+            }
         }
     }
 

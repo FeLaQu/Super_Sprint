@@ -15,13 +15,18 @@ public class VCar {
 	
 	public VCar(Car car){
 		this.car=car;
-		ImageIcon ii = new ImageIcon("C://voiture_d.png");
+		ImageIcon ii = new ImageIcon("C://voiture_g.png");
 		image = ii.getImage(); 
 	}
 	
 	
 	public Image getImage(){
 		return image;
+	}
+	
+	
+	public void setImage(Image image){
+		this.image=image;
 	}
 	
 	public int getX(){

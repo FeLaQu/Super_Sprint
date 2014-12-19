@@ -15,19 +15,20 @@ import Vue.Window;
 public class Course implements ActionListener {
 	
 	private Timer timer;
-	private Circuit circuit;
+	private static Circuit circuit;
 	private static Car car;
 	private Window window;	
 	private int  ddx; int ddy;
 	
 	
 	public static void main(String[] args) {
-		new Course();		
+		new Course();				
 	}
 
 	public Course() {
-		car= new Car(1, new int[] {300,300});
-		window= new Window(car, this);			
+		car= new Car(1, new int[] {600,120});
+		circuit= new Circuit(1);
+		window= new Window(car, circuit, this);			
 		
 		timer = new Timer(5,this);
         timer.start();
@@ -35,8 +36,8 @@ public class Course implements ActionListener {
 
 	
 	public void actionPerformed(ActionEvent evt) {
-	          car.move(ddx,ddy);
-	          window.repaint();
+		car.move(ddx,ddy, circuit);
+         window.repaint();
 	}
 	 
 	public void setddx(int x){

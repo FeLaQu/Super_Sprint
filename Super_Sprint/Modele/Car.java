@@ -70,7 +70,7 @@ public class Car {
 		speed[1]=y;
 	}
 
-	public void move(int ddx, int ddy){
+	public void move(int ddx, int ddy, Circuit circuit){
 		if (ddx==1)
     		speed[0] += max_acceleration;
     	
@@ -105,10 +105,21 @@ public class Car {
     		speed[1]=max_speed;
     	
     	if (speed[1]<-max_speed)
-    		speed[1]=-max_speed;
+    		speed[1]=-max_speed;	
     	
-    	position[0] += speed[0];
-        position[1] += speed[1];
+    	
+    	int new_posX= position[0] + speed[0];
+        int new_posY= position[1] + speed[1];
+        
+        if (circuit.getValue(new_posX, new_posY)==1){
+        	speed[0]=0;
+        	speed[1]=0;
+        }
+        else{
+        	position[0]=new_posX;
+        	position[1]=new_posY;
+        }
+        	
 	}      
 	
 	
