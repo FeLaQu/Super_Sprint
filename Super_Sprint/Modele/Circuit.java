@@ -3,11 +3,9 @@ package Modele;
 import java.io.File;
 import java.util.Scanner;
 
-import Vue.VCircuit;
 
 
-
-public class Circuit extends VCircuit{
+public class Circuit{
 
 	private int ID ;
 	private int[][] matrice ;
@@ -20,7 +18,7 @@ public class Circuit extends VCircuit{
 		if (id==1){			// we import here the matrix for the circuit number 1
 			// import matrix of graylevel circuit
 			try{
-				Scanner img = new Scanner(new File("src/out.pgm"));
+				Scanner img = new Scanner(new File("Super_Sprint/out.pgm"));
 				img.next(); // P2
 				img.next(); // 1200
 				img.next(); //700
@@ -47,6 +45,10 @@ public class Circuit extends VCircuit{
 
 	public int getValue(int i , int j){
 		return this.matrice[i][j] ;
+	}
+	
+	public int getID(){
+		return this.ID ;
 	}
 	
 	
