@@ -9,7 +9,7 @@ public class RType extends JFrame {
         add(new Board());
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1300, 700);
+        setSize(1200, 700);
         setLocationRelativeTo(null);
         setTitle("Le jeu qui tue");
         setResizable(false);
