@@ -103,5 +103,9 @@ public class JBoard extends JPanel {
             }
         }
     }
+    
+    public VCar getVCar(){
+    	return this.view_car;
+    }
 
 }

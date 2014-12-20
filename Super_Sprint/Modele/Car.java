@@ -1,6 +1,7 @@
 package Modele;
 
 
+
 public class Car {
 
 	private int ID ;		//Identification of the car
@@ -10,6 +11,7 @@ public class Car {
 	private int max_speed ;		// Characteristic of the car
 	private int max_acceleration ;	//IDEM
 	private float maniability ; //IDEM
+	
 	
 	
 	public Car(int id, int[] position) {		
@@ -27,9 +29,7 @@ public class Car {
 			this.max_speed = 4;
 			this.max_acceleration = 2;
 			this.maniability = 2;
-		}
-
-		
+		}		
 	}
 	
 	public int getID(){
@@ -70,7 +70,7 @@ public class Car {
 		speed[1]=y;
 	}
 
-	public void move(int ddx, int ddy, Circuit circuit){
+	public void move(int ddx, int ddy, Circuit circuit, int w, int h){
 		if (ddx==1)
     		speed[0] += max_acceleration;
     	
@@ -109,14 +109,19 @@ public class Car {
     	
     	
     	int new_posX= position[0] + speed[0];
-        int new_posY= position[1] + speed[1];
+        int new_posY= position[1] + speed[1];  // the new position of the car before we check if the car gets out of the circuit   
         
-        if (circuit.getValue(new_posX, new_posY)==1){
-        	speed[0]=0;
+        
+        
+        if (circuit.getValue(new_posX+w/2, new_posY+h/2)==1 || // we check if one of the corner of the car gets out of the circuit
+        		circuit.getValue(new_posX+w/2, new_posY-h/2)==1||
+        		circuit.getValue(new_posX-w/2, new_posY+h/2)==1||
+        		circuit.getValue(new_posX-w/2, new_posY-h/2)==1){
+        	speed[0]=0; // if the car gets out: speed=0 and we keep the former position
         	speed[1]=0;
         }
         else{
-        	position[0]=new_posX;
+        	position[0]=new_posX; // if not we move the car to the new position
         	position[1]=new_posY;
         }
         	

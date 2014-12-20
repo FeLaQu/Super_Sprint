@@ -12,11 +12,15 @@ public class VCar {
 	
 	private Car car;
 	private Image image;
+	private int width;
+	private int height;
 	
 	public VCar(Car car){
 		this.car=car;
 		ImageIcon ii = new ImageIcon("C://voiture_g.png");
-		image = ii.getImage(); 
+		image = ii.getImage();
+		width= image.getWidth(null);
+		height= image.getHeight(null);
 	}
 	
 	
@@ -24,21 +28,28 @@ public class VCar {
 		return image;
 	}
 	
+	public int getWidth(){
+		return width;
+	}
+	
+	public int getHeight(){
+		return height;
+	}
 	
 	public void setImage(Image image){
 		this.image=image;
 	}
 	
-	public int getX(){
-		return car.getPosition()[0];
+	public int getX(){		
+		return car.getPosition()[0] - width/2;	// to center the view of the car around its position	
 	}
 	
-	public int getY(){
-		return car.getPosition()[1];
+	public int getY(){		
+		return car.getPosition()[1]- height/2; // to center the view of the car around its position
 	}
 	
-	public void rotate(){
-		if (car.getSpeed()[0]>0){
+	public void rotate(){ // depends on the sign of speed[0] and speed[1]
+		if (car.getSpeed()[0]>0){ 
         	if(car.getSpeed()[1]>0){
         		ImageIcon ii = new ImageIcon("C://voiture_bd.png");
         		image = ii.getImage();

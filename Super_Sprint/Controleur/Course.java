@@ -7,6 +7,7 @@ import javax.swing.Timer;
 
 import Modele.Car;
 import Modele.Circuit;
+import Vue.VCar;
 import Vue.Window;
 
 
@@ -35,9 +36,13 @@ public class Course implements ActionListener {
 	}
 
 	
-	public void actionPerformed(ActionEvent evt) {
-		car.move(ddx,ddy, circuit);
-         window.repaint();
+	public void actionPerformed(ActionEvent evt) {		
+		VCar view_car= window.getBoard().getVCar();
+		int w = view_car.getWidth();
+		int h = view_car.getHeight(); 
+		
+		car.move(ddx,ddy, circuit, w, h);	// car.move uses the width and the height of view_car to check if it gets out of the circuit	
+        window.repaint();
 	}
 	 
 	public void setddx(int x){
@@ -46,6 +51,7 @@ public class Course implements ActionListener {
 	
 	public void setddy(int y){
 		ddy = y;
-	}	 
+	}	
+	 
 
 }

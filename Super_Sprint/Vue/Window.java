@@ -34,4 +34,8 @@ public class Window extends JFrame {
 		board.paint(g);
 	}
 	
+	public JBoard getBoard(){
+		return board;
+	}
+	
 }
