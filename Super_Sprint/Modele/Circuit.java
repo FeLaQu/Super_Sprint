@@ -17,7 +17,7 @@ public class Circuit{
 										// y between 0 and 699 (from up to down)
 
 		if (id==1){			// we import here the matrix for the circuit number 1
-			// import matrix of graylevel circuit
+			               // import matrix of graylevel circuit
 			try{
 				Scanner img = new Scanner(new File("C://out.pgm"));
 				img.next(); // P2
@@ -37,7 +37,7 @@ public class Circuit{
 				}
 				img.close();
 			} catch (Exception yolo){
-				System.out.println("Ficher non trouvé");
+				System.out.println("Ficher non trouve");
 			}
 		}
 		this.ID = id ;
