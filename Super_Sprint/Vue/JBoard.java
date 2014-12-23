@@ -3,9 +3,14 @@ package Vue;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.Toolkit;
+import java.awt.Transparency;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -35,6 +40,8 @@ public class JBoard extends JPanel {
         this.course=course;
         this.car=car;
     }
+    
+    
 
 
     public void paint(Graphics g) {
@@ -44,7 +51,7 @@ public class JBoard extends JPanel {
         
         g2d.drawImage(view_circuit.getImage(), 0,0, null);
         
-        this.view_car.rotate();        
+        this.view_car.pivote();        
         g2d.drawImage(view_car.getImage(), view_car.getX(), view_car.getY(),this);                                        
 
         Toolkit.getDefaultToolkit().sync();
@@ -59,19 +66,19 @@ public class JBoard extends JPanel {
             int key = e.getKeyCode();
 
 	        if (key == KeyEvent.VK_LEFT) {
-	            course.setddx(0);            
+	            course.setdn(0);            
 	        }
 	
 	        if (key == KeyEvent.VK_RIGHT) {
-	            course.setddx(0);            
+	            course.setdn(0);            
 	        }
 	
 	        if (key == KeyEvent.VK_UP) {
-	            course.setddy(0);            
+	            course.setdt(0);            
 	        }
 	
 	        if (key == KeyEvent.VK_DOWN) {
-	            course.setddy(0);         
+	            course.setdt(0);         
 	        }
         }
 
@@ -79,27 +86,23 @@ public class JBoard extends JPanel {
         	int key = e.getKeyCode();
 
             if (key == KeyEvent.VK_LEFT) {
-                course.setddx(-1);          
+                course.setdn(-1);          
             }
 
             if (key == KeyEvent.VK_RIGHT) {
-                course.setddx(1);
+                course.setdn(1);
             }
 
             if (key == KeyEvent.VK_UP) {
-                course.setddy(-1);
+                course.setdt(1);
             }
 
             if (key == KeyEvent.VK_DOWN) {
-                course.setddy(1);
+                course.setdt(-1);
             }
             
             if (key == KeyEvent.VK_R){
-            	car.setPosition(600,120);	        	
-            	car.setSpeed(0,0);
-            	course.setddx(0);
-            	course.setddy(0);
-            	view_car.setImage(new ImageIcon("C://voiture_g.png").getImage());
+            	car.setInit();
             }
         }
     }

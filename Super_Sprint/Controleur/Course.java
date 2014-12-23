@@ -18,8 +18,11 @@ public class Course implements ActionListener {
 	private Timer timer;
 	private static Circuit circuit;
 	private static Car car;
-	private Window window;	
-	private int  ddx; int ddy;
+	private Window window;
+	
+	private int  dt; int dn; // results of the keyboard listening
+							// dt: a move parallel to the speed vector
+							// dn: a move orthogonal to the speed vector
 	
 	
 	public static void main(String[] args) {
@@ -31,7 +34,7 @@ public class Course implements ActionListener {
 		circuit= new Circuit(1);
 		window= new Window(car, circuit, this);			
 		
-		timer = new Timer(5,this);
+		timer = new Timer(1,this);
         timer.start();
 	}
 
@@ -41,16 +44,16 @@ public class Course implements ActionListener {
 		int w = view_car.getWidth();
 		int h = view_car.getHeight(); 
 		
-		car.move(ddx,ddy, circuit, w, h);	// car.move uses the width and the height of view_car to check if it gets out of the circuit	
+		car.move(dt,dn, circuit, w, h);	// car.move uses the width and height of view_car to check if the car gets out of the circuit	
         window.repaint();
 	}
 	 
-	public void setddx(int x){
-		ddx = x;
+	public void setdt(int x){
+		dt = x;
 	}
 	
-	public void setddy(int y){
-		ddy = y;
+	public void setdn(int y){
+		dn = y;
 	}	
 	 
 
