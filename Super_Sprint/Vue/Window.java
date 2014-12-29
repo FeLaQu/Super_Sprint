@@ -24,7 +24,7 @@ public class Window extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1200, 700);
 		setLocationRelativeTo(null);
-		setTitle("Le jeu qui tue, le vrai");
+		setTitle("Super Sprint");
 		setResizable(false);
 		setVisible(true);
 		setAlwaysOnTop(false);
