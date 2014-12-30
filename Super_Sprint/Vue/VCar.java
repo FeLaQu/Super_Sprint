@@ -22,11 +22,18 @@ public class VCar {
 	
 	private Car car;
 	private Image image;	
+	private String link;
 	
 	public VCar(Car car){
 		this.car=car;
+		if (car.getID()==1){
+			link= "C:\\Red_car.png";
+		}
+		else if (car.getID()==2){
+			link="C:\\Yellow_car.png";
+		}
 		try { 	         
-			image = ImageIO.read(new File("C://voiture_g.png"));
+			image = ImageIO.read(new File(link));
 	        } catch (IOException ex) {             
 	            System.out.println(ex);
 	        }			
@@ -79,7 +86,7 @@ public class VCar {
 	
     public void pivote(){
     	try { 	         
-			BufferedImage img = ImageIO.read(new File("C://voiture_d.png"));
+			BufferedImage img = ImageIO.read(new File(link));
 			double angle=-car.getBeta();			
 	
 			BufferedImage img1= rotate(img, angle);
@@ -87,50 +94,7 @@ public class VCar {
 	        } catch (IOException ex) {             
 	            System.out.println(ex);
 	        }    	
-    }
+    } 
     
-    
-	/*public void rotate(){ // depends on the sign of speed[0] and speed[1]
-		if (car.getSpeed()[0]>0.1){ 
-        	if(car.getSpeed()[1]>0.1){
-        		ImageIcon ii = new ImageIcon("C://voiture_bd.png");
-        		image = ii.getImage();
-        	}
-        	else if(car.getSpeed()[1]<-0.1){
-        		ImageIcon ii = new ImageIcon("C://voiture_hd.png");
-        		image = ii.getImage();
-        	}
-        	else{
-        		ImageIcon ii = new ImageIcon("C://voiture_d.png");
-        		image = ii.getImage();
-        	}
-        }
-        
-		else if (car.getSpeed()[0]<-0.1){
-        	if(car.getSpeed()[1]>0.1){
-        		ImageIcon ii = new ImageIcon("C://voiture_bg.png");
-        		image = ii.getImage();
-        	}
-        	if(car.getSpeed()[1]<-0.1){
-        		ImageIcon ii = new ImageIcon("C://voiture_hg.png");
-        		image = ii.getImage();
-        	}
-        	else{
-        		ImageIcon ii = new ImageIcon("C://voiture_g.png");
-        		image = ii.getImage();
-        	}
-        }
-        
-		else{
-        	if(car.getSpeed()[1]>0.1){
-        		ImageIcon ii = new ImageIcon("C://voiture_b.png");
-        		image = ii.getImage();
-        	}
-        	if(car.getSpeed()[1]<-0.1){
-        		ImageIcon ii = new ImageIcon("C://voiture_h.png");
-        		image = ii.getImage();
-        	}        	
-        }
-	}*/
 
 }

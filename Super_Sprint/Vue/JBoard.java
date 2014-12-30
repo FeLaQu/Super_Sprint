@@ -103,6 +103,7 @@ public class JBoard extends JPanel {
             
             if (key == KeyEvent.VK_R){
             	car.setInit();
+            	course.initTime();
             }
         }
     }

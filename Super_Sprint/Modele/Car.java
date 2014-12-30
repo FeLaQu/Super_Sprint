@@ -14,7 +14,7 @@ public class Car {
     private double acceleration; // The acceleration of the car (how fast the
 				 // car speeds up)
     private double maneuverability; // The maneuverability of the car (how fast
-				    // the car can turn)
+				    // the car can turn) // between 1 and 2
 
     private boolean flag = false;
 
@@ -28,12 +28,12 @@ public class Car {
 	if (id == 1) {
 	    this.max_speed = 5;
 	    this.acceleration = 0.1;
-	    this.maneuverability = 1.5; // between 1 and 2
+	    this.maneuverability = 1.5; 
 	}
 	if (id == 2) {
-	    this.max_speed = 4;
-	    this.acceleration = 2;
-	    this.maneuverability = 2;
+	    this.max_speed = 4.5;
+	    this.acceleration = 0.5;
+	    this.maneuverability = 1.8;
 	}
     }
 
@@ -188,7 +188,7 @@ public class Car {
 
 	// PROBLEM!
 	// Here we have four positions with each representing the car's four corners.
-	// However, they are not fairly correct cause we have ignored the angle of the car's orientation. If the car is not parallel with axis X or Y, it will have some errors.
+	// However, they are not fairly correct because we have ignored the angle of the car's orientation. If the car is not parallel with axis X or Y, it will have some errors.
 	int Car_position_left_top = circuit.getValue(new_posX + w / 2, new_posY + h / 2);
 	int Car_position_right_top = circuit.getValue(new_posX + w / 2, new_posY - h / 2);
 	int Car_position_left_bottom = circuit.getValue(new_posX - w / 2, new_posY + h / 2);
@@ -201,7 +201,7 @@ public class Car {
 	    position[1] = new_posY;
 
 	} else {
-	    // PS: I do not know what does it mean "flag" here..
+	    // flag is used to
 	    if (!flag) {
 		orientation[0] = orient * speed[0];
 		orientation[1] = orient * speed[1];
