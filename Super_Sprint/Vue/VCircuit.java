@@ -12,16 +12,19 @@ import Modele.Circuit;
 public class VCircuit {
 	
 	private Image image;
+	private String link;
 	
 	public Image getImage(){
 		return image;
 	}
 
 	public VCircuit(Circuit circuit) {
+		if (circuit.getID()==1){
+			link="C://out.png";
+		}
 		
-		try { 
-	         
-			image = ImageIO.read(new File("C://out.png"));
+		try {	         
+			image = ImageIO.read(new File(link));
 	        } catch (IOException ex) {             
 	            System.out.println(ex);
 	        }

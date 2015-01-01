@@ -89,10 +89,16 @@ public class Car {
     }
 
     public void setInit() {
-	setPosition(600, 120);
-	setSpeed(0, 0);
-	setOrientation(-1, 0);
-	orient = 0;
+    	if (ID==1){
+    		setPosition(600, 100);
+    	}
+    	if (ID==2){
+    		setPosition(600, 140);
+    	}
+		
+		setSpeed(0, 0);
+		setOrientation(-1, 0);
+		orient = 0;
     }
 
     public void rotate(double alpha) { // alpha is in radiant
@@ -177,7 +183,7 @@ public class Car {
 
     public void move(int dt, int dn, Circuit circuit, int w, int h) {
 
-	this.update_speed(dt, dn);
+	this.update_speed(dt, dn);	
 
 	int spX = (int) Math.round(speed[0]);
 	int spY = (int) Math.round(speed[1]);
@@ -201,7 +207,7 @@ public class Car {
 	    position[1] = new_posY;
 
 	} else {
-	    // flag is used to
+	    // flag is used in order that orientation is not equal to (0,0)
 	    if (!flag) {
 		orientation[0] = orient * speed[0];
 		orientation[1] = orient * speed[1];

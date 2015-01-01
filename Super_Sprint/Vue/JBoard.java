@@ -3,16 +3,10 @@ package Vue;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
 import java.awt.Toolkit;
-import java.awt.Transparency;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
 
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import Controleur.Course;
@@ -22,23 +16,34 @@ import Modele.Circuit;
 
 public class JBoard extends JPanel {
 	
-	private VCar view_car;
+	private VCar[] view_cars; // a vector with the same length as "cars"
 	private VCircuit view_circuit;
 	private Course course;
-	private Car car;
+	private Car[] cars;
+	private int nbr_player;
 	
-    public JBoard(Car car, Circuit circuit, Course course) {
+    public JBoard(Car[] cars, Circuit circuit, Course course) {
     	
     	addKeyListener(new TAdapter());
         setFocusable(true);
         setBackground(Color.WHITE);
         setDoubleBuffered(true);     
               
-           
-        this.view_car= new VCar(car);
+        this.nbr_player= course.getNbrPlayer();        
+        this.view_cars= new VCar[nbr_player];
+        
+        if (nbr_player==1){
+        	view_cars[0]= new VCar(cars[0]);
+        }
+        if (nbr_player==2){
+        	view_cars[0]= new VCar(cars[0]);
+        	view_cars[1]= new VCar(cars[1]);
+        }
+        
+        
         this.view_circuit= new VCircuit(circuit);
         this.course=course;
-        this.car=car;
+        this.cars=cars;
     }
     
     
@@ -51,8 +56,17 @@ public class JBoard extends JPanel {
         
         g2d.drawImage(view_circuit.getImage(), 0,0, null);
         
-        this.view_car.pivote();        
-        g2d.drawImage(view_car.getImage(), view_car.getX(), view_car.getY(),this);                                        
+        if (nbr_player==1){        
+        	this.view_cars[0].pivote();        
+        	g2d.drawImage(view_cars[0].getImage(), view_cars[0].getX(), view_cars[0].getY(),this);  
+        }
+        
+        else if (nbr_player==2){
+        	this.view_cars[0].pivote();  
+        	this.view_cars[1].pivote();  
+        	g2d.drawImage(view_cars[0].getImage(), view_cars[0].getX(), view_cars[0].getY(),this);  
+        	g2d.drawImage(view_cars[1].getImage(), view_cars[1].getX(), view_cars[1].getY(),this);  
+        }
 
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
@@ -66,19 +80,35 @@ public class JBoard extends JPanel {
             int key = e.getKeyCode();
 
 	        if (key == KeyEvent.VK_LEFT) {
-	            course.setdn(0);            
+	            course.setdn0(0);            
 	        }
 	
 	        if (key == KeyEvent.VK_RIGHT) {
-	            course.setdn(0);            
+	            course.setdn0(0);            
 	        }
 	
 	        if (key == KeyEvent.VK_UP) {
-	            course.setdt(0);            
+	            course.setdt0(0);            
 	        }
 	
 	        if (key == KeyEvent.VK_DOWN) {
-	            course.setdt(0);         
+	            course.setdt0(0);         
+	        }
+	        
+	        if (key == KeyEvent.VK_Q) {
+	            course.setdn1(0);            
+	        }
+	
+	        if (key == KeyEvent.VK_D) {
+	            course.setdn1(0);            
+	        }
+	
+	        if (key == KeyEvent.VK_Z) {
+	            course.setdt1(0);            
+	        }
+	
+	        if (key == KeyEvent.VK_S) {
+	            course.setdt1(0);         
 	        }
         }
 
@@ -86,30 +116,51 @@ public class JBoard extends JPanel {
         	int key = e.getKeyCode();
 
             if (key == KeyEvent.VK_LEFT) {
-                course.setdn(-1);          
+                course.setdn0(-1);          
             }
 
             if (key == KeyEvent.VK_RIGHT) {
-                course.setdn(1);
+                course.setdn0(1);
             }
 
             if (key == KeyEvent.VK_UP) {
-                course.setdt(1);
+                course.setdt0(1);
             }
 
             if (key == KeyEvent.VK_DOWN) {
-                course.setdt(-1);
+                course.setdt0(-1);
             }
             
-            if (key == KeyEvent.VK_R){
-            	car.setInit();
-            	course.initTime();
+            if (key == KeyEvent.VK_R){            	
+            		cars[0].setInit();
+            		if (nbr_player==2){
+            			cars[1].setInit();
+            		}            		
+            		course.initTime();            	
             }
+            	
+        	if (key == KeyEvent.VK_Q) {
+	            course.setdn1(-1);            
+	        }
+	
+	        if (key == KeyEvent.VK_D) {
+	            course.setdn1(1);            
+	        }
+	
+	        if (key == KeyEvent.VK_Z) {
+	            course.setdt1(1);            
+	        }
+	
+	        if (key == KeyEvent.VK_S) {
+	            course.setdt1(-1);         
+	        }
+            	
+            
         }
     }
     
-    public VCar getVCar(){
-    	return this.view_car;
+    public VCar[] getVCar(){
+    	return this.view_cars;
     }
 
 }

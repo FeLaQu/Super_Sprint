@@ -15,9 +15,9 @@ public class Window extends JFrame {
 	
 	private JBoard  board;
 
-	public Window(Car car, Circuit circuit, Course course) {
+	public Window(Car[] cars, Circuit circuit, Course course) {
 		
-		board = new JBoard(car, circuit, course);
+		board = new JBoard(cars, circuit, course);
 		add(board);
 				
 		setBackground(Color.white);
