@@ -95,19 +95,19 @@ public class JBoard extends JPanel {
 	            course.setdt0(0);         
 	        }
 	        
-	        if (key == KeyEvent.VK_Q) {
+	        if (key == KeyEvent.VK_S) {
 	            course.setdn1(0);            
 	        }
 	
-	        if (key == KeyEvent.VK_D) {
+	        if (key == KeyEvent.VK_F) {
 	            course.setdn1(0);            
 	        }
 	
-	        if (key == KeyEvent.VK_Z) {
+	        if (key == KeyEvent.VK_E) {
 	            course.setdt1(0);            
 	        }
 	
-	        if (key == KeyEvent.VK_S) {
+	        if (key == KeyEvent.VK_D) {
 	            course.setdt1(0);         
 	        }
         }
@@ -139,19 +139,19 @@ public class JBoard extends JPanel {
             		course.initTime();            	
             }
             	
-        	if (key == KeyEvent.VK_Q) {
+        	if (key == KeyEvent.VK_S) {
 	            course.setdn1(-1);            
 	        }
 	
-	        if (key == KeyEvent.VK_D) {
+	        if (key == KeyEvent.VK_F) {
 	            course.setdn1(1);            
 	        }
 	
-	        if (key == KeyEvent.VK_Z) {
+	        if (key == KeyEvent.VK_E) {
 	            course.setdt1(1);            
 	        }
 	
-	        if (key == KeyEvent.VK_S) {
+	        if (key == KeyEvent.VK_D) {
 	            course.setdt1(-1);         
 	        }
             	

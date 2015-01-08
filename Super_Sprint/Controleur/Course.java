@@ -14,7 +14,7 @@ public class Course implements ActionListener {
 
     private Timer timer;
     private static Circuit circuit;
-    private static int nbr_player=2; //number of players (1 or 2)
+    private int nbr_player=0; //number of players (1 or 2)
     private static Car[] cars; // a vector with one or two cars
     private Window window;
     
@@ -29,11 +29,15 @@ public class Course implements ActionListener {
 	    // dn: a move orthogonal to the speed vector
 
     public static void main(String[] args) {
-    	new Course(1);
+    	Menu menu = new Menu();
+    	while (menu.isActive()){}
+    	int nbr_player=menu.getNbrPlayer();
+    	new Course(1,nbr_player);
     }
 
-    public Course(int  circuit_id) {
-    	
+    public Course(int  circuit_id, int nbr_player) {     	
+    	    	   	
+    	this.nbr_player=nbr_player;
     	cars= new Car[nbr_player];
     	
     	if (nbr_player==1){    		
@@ -83,7 +87,7 @@ public class Course implements ActionListener {
 			}
 		}
 		
-		if (nbr_player==2){
+		else if (nbr_player==2){
 			int w0 = view_cars[0].getWidth();
 			int h0 = view_cars[0].getHeight();			
 			int w1 = view_cars[1].getWidth();
@@ -123,6 +127,6 @@ public class Course implements ActionListener {
     
     public int getNbrPlayer(){
     	return nbr_player;
-    }
-
+    }    
+    
 }
