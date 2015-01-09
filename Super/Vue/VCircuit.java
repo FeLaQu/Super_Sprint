@@ -22,6 +22,9 @@ public class VCircuit {
 		if (circuit.getID()==1){
 			link="C://out.png";
 		}
+		if (circuit.getID()==2){
+			link="C://cuircuit8.png";
+		}
 		
 		try {	         
 			image = ImageIO.read(new File(link));

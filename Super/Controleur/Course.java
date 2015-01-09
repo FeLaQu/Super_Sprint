@@ -32,7 +32,7 @@ public class Course implements ActionListener {
     	Menu menu = new Menu();
     	while (menu.isActive()){}
     	int nbr_player=menu.getNbrPlayer();
-    	new Course(1,nbr_player);
+    	new Course(2,nbr_player);
     }
 
     public Course(int  circuit_id, int nbr_player) {     	
@@ -41,12 +41,12 @@ public class Course implements ActionListener {
     	cars= new Car[nbr_player];
     	
     	if (nbr_player==1){    		
-    		cars[0] = new Car(1, new int[] { 600, 100 });
+    		cars[0] = new Car(1, new int[] { 625, 100 });
     	}
     	
     	else if (nbr_player==2){    		
-    		cars[0]=new Car(1, new int[] { 600, 100 });
-    		cars[1]=new Car(2, new int[] { 600, 140 });
+    		cars[0]=new Car(1, new int[] { 625, 100 });
+    		cars[1]=new Car(2, new int[] { 625, 140 });
     	}
 		
 		circuit = new Circuit(circuit_id);
