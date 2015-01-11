@@ -6,15 +6,15 @@ import java.util.Scanner;
 public class Circuit {
 
 	private int ID;
-	private int[][] matrice;
-
-	public Circuit(int id) {
-
-		int[][] mat = new int[1200][700]; // x between 0 and 1199 (from left to
+	private int[][] matrice= new int[1200][700];// x between 0 and 1199 (from left to
 		// right)
 		// y between 0 and 699 (from up to
 		// down)
+	
+	private int[][] init_position; // A 2X2 matrix for the initial position of the two cars
 
+	public Circuit(int id) {
+		
 		if (id == 1) { // we import here the matrix for the circuit number 1
 			// import matrix of graylevel circuit
 			try {
@@ -27,9 +27,9 @@ public class Circuit {
 					for (int i = 0; i < 1200; i++) {
 						int num = Integer.parseInt(img.next());
 						if (num == 255) {
-							mat[i][j] = 1;
+							matrice[i][j] = 1;
 						} else {
-							mat[i][j] = 0;
+							matrice[i][j] = 0;
 						}
 					}
 				}
@@ -37,9 +37,11 @@ public class Circuit {
 			} catch (Exception yolo) {
 				System.out.println("Ficher non trouve");
 			}
+			
+			init_position= new int[][] {{625,100},{625,140}};
 		}
 
-		if (id == 2) { // we import here the matrix for the circuit number 2
+		else if (id == 2) { // we import here the matrix for the circuit number 2
 			// import matrix of graylevel circuit
 			try {
 				Scanner img = new Scanner(new File("C://cuircuit8.pgm"));
@@ -51,9 +53,9 @@ public class Circuit {
 					for (int i = 0; i < 1200; i++) {
 						int num = Integer.parseInt(img.next());
 						if (num == 255) {
-							mat[i][j] = 1;
+							matrice[i][j] = 1;
 						} else {
-							mat[i][j] = 0;
+							matrice[i][j] = 0;
 						}
 					}
 				}
@@ -61,11 +63,11 @@ public class Circuit {
 			} catch (Exception yolo2) {
 				System.out.println("Ficher 2 non trouve");
 			}
+			init_position= new int[][] {{600,30},{600,70}};
 		}
 
 
-		this.ID = id;
-		this.matrice = mat;
+		this.ID = id;		
 	}
 
 	public int getValue(int i, int j) {
@@ -76,4 +78,7 @@ public class Circuit {
 		return this.ID;
 	}
 
+	public int[][] getInit_Position(){
+		return this.init_position;
+	}
 }

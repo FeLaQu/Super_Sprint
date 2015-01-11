@@ -1,26 +1,30 @@
 package Modele;
 
+import Modele.Circuit;
+
 public class Car {
 
-    private int ID; // Identification of the car
+private int ID; // Identification of the car
 
-    private int[] position; // A 2x1 vector for the current position
-    private double[] speed; // A 2x1 vector for the current speed
-    private double[] orientation; // A 2x1 vector for the current orientation of
-				  // the car
-    private int orient; // if speed=0:0, if reverse gear= -1, else 1
+private int[] position; // A 2x1 vector for the current position
+private double[] speed; // A 2x1 vector for the current speed
+private double[] orientation; // A 2x1 vector for the current orientation of
+			  // the car
+private int orient; // if speed=0:0, if reverse gear= -1, else 1
 
-    private double max_speed; // The maximum speed the car can go
-    private double acceleration; // The acceleration of the car (how fast the
-				 // car speeds up)
-    private double maneuverability; // The maneuverability of the car (how fast
-				    // the car can turn) // between 1 and 2
+private double max_speed; // The maximum speed the car can go
+private double acceleration; // The acceleration of the car (how fast the
+			 // car speeds up)
+private double maneuverability; // The maneuverability of the car (how fast
+			    // the car can turn) // between 1 and 2
 
-    private boolean flag = false;
+private boolean flag = false;
+private int[] init_position;
 
-    public Car(int id, int[] position) {
-	this.ID = id;
-	this.position = position;
+public Car(int id, int[] position) {
+	this.ID = id;	
+	this.init_position= new int[] {position[0],position[1]};	
+	this.position = position;	
 	this.speed = new double[] { 0, 0 };
 	this.orientation = new double[] { -1, 0 };
 	this.orient = 0;
@@ -37,23 +41,23 @@ public class Car {
 	}
     }
 
-    public int getID() {
+public int getID() {
 	return this.ID;
     }
 
-    public int[] getPosition() {
+public int[] getPosition() {
 	return this.position;
     }
 
-    public double[] getSpeed() {
+public double[] getSpeed() {
 	return this.speed;
     }
 
-    public double getSpeed_a() { // modulus of the speed vector
+public double getSpeed_a() { // modulus of the speed vector
 	return Math.sqrt(speed[0] * speed[0] + speed[1] * speed[1]);
     }
 
-    public double getBeta() { // angle of the orientation of the car
+public double getBeta() { // angle of the orientation of the car
 	double beta;
 
 	if (orientation[0] == 0) {
@@ -73,35 +77,29 @@ public class Car {
 	return beta;
     }
 
-    public void setPosition(int x, int y) {
+public void setPosition(int x, int y) {
 	position[0] = x;
 	position[1] = y;
     }
 
-    public void setSpeed(int x, int y) {
+public void setSpeed(int x, int y) {
 	speed[0] = x;
 	speed[1] = y;
     }
 
-    public void setOrientation(int x, int y) {
+public void setOrientation(int x, int y) {
 	orientation[0] = x;
 	orientation[1] = y;
     }
 
-    public void setInit() {
-    	if (ID==1){
-    		setPosition(600, 100);
-    	}
-    	if (ID==2){
-    		setPosition(600, 140);
-    	}
-		
-		setSpeed(0, 0);
-		setOrientation(-1, 0);
-		orient = 0;
-    }
+public void setInit() {	
+	setPosition(init_position[0], init_position[1]);		
+	setSpeed(0, 0);
+	setOrientation(-1, 0);
+	orient = 0;
+}
 
-    public void rotate(double alpha) { // alpha is in radiant
+public void rotate(double alpha) { // alpha is in radiant
 	double sp = this.getSpeed_a();
 	double beta = this.getBeta();
 
@@ -129,7 +127,7 @@ public class Car {
 
     }
 
-    public void decelerate(double decel) {
+public void decelerate(double decel) {
 	double sp = this.getSpeed_a();
 	double beta = this.getBeta();
 
@@ -148,7 +146,7 @@ public class Car {
 	}
     }
 
-    public void update_speed(int dt, int dn) {
+public void update_speed(int dt, int dn) {
 
 	if ((dn == 1 && orient == 1) || (dn == -1 && orient == -1)) {
 	    rotate(-Math.PI * maneuverability / 120);
@@ -181,7 +179,7 @@ public class Car {
      * @author : Quentin, Chengang 
      */
 
-    public void move(int dt, int dn, Circuit circuit, int w, int h) {
+public void move(int dt, int dn, Circuit circuit, int w, int h) {
 
 	this.update_speed(dt, dn);	
 
@@ -190,8 +188,15 @@ public class Car {
 
 	// New position of the car
 	int new_posX = position[0] + spX;
-	int new_posY = position[1] + spY;
-
+	int new_posY = position[1] + spY;	
+	
+	boolean car_inside = new_posX + w / 2 >0 && new_posX + w / 2<1200 &&
+			new_posX - w / 2 >0 && new_posX - w / 2<1200 &&
+			new_posY + h / 2>0 && new_posY + h / 2<700 &&
+			new_posY - h / 2>0 && new_posY - h / 2<700;
+			
+	if (car_inside) {
+		
 	// PROBLEM!
 	// Here we have four positions with each representing the car's four corners.
 	// However, they are not fairly correct because we have ignored the angle of the car's orientation. If the car is not parallel with axis X or Y, it will have some errors.
@@ -205,9 +210,10 @@ public class Car {
 	    flag = false;
 	    position[0] = new_posX;
 	    position[1] = new_posY;
+	}
 
 	} else {
-	    // flag is used in order that orientation is not equal to (0,0)
+	    // flag is used in order that orientation does not go to (0,0)
 	    if (!flag) {
 		orientation[0] = orient * speed[0];
 		orientation[1] = orient * speed[1];
