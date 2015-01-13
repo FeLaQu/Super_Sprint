@@ -32,24 +32,27 @@ public class Course implements ActionListener {
     	Menu menu = new Menu();
     	while (menu.isActive()){}
     	int nbr_player=menu.getNbrPlayer();
-    	new Course(1,nbr_player);
+    	int circuit_id= menu.getCircuitId();
+    	new Course(circuit_id,nbr_player);
     }
 
     public Course(int  circuit_id, int nbr_player) {     	
     	    	   	
     	this.nbr_player=nbr_player;
+    	circuit = new Circuit(circuit_id);
+    	
     	cars= new Car[nbr_player];
     	
     	if (nbr_player==1){    		
-    		cars[0] = new Car(1, new int[] { 600, 100 });
+    		cars[0] = new Car(1, circuit.getInit_Position()[0]);
     	}
     	
     	else if (nbr_player==2){    		
-    		cars[0]=new Car(1, new int[] { 600, 100 });
-    		cars[1]=new Car(2, new int[] { 600, 140 });
+    		cars[0]=new Car(1, circuit.getInit_Position()[0]);
+    		cars[1]=new Car(2, circuit.getInit_Position()[1]);
     	}
 		
-		circuit = new Circuit(circuit_id);
+		
 		window = new Window(cars, circuit, this);
 	
 		timer = new Timer(10, this);
