@@ -13,6 +13,7 @@ public class Menu extends JFrame implements ActionListener{
 	private JPanel pan2= new JPanel();
 	private JButton player_1= new JButton("1 player");
 	private JButton player_2= new JButton("2 players");
+	private JButton player_4= new JButton("4 players");
 	private JButton circuit_1= new JButton("Circuit 1");
 	private JButton circuit_2= new JButton("Circuit 2");
 	private int nbr_player=0;
@@ -28,10 +29,12 @@ public class Menu extends JFrame implements ActionListener{
 		
 		pan.add(player_1);
 		pan.add(player_2);
+		pan.add(player_4);
 		getContentPane().add(pan);
 		
 		player_1.addActionListener(this);
 		player_2.addActionListener(this);
+		player_4.addActionListener(this);
 		
 		pan2.add(circuit_1);
 		pan2.add(circuit_2);
@@ -50,6 +53,13 @@ public class Menu extends JFrame implements ActionListener{
 		
 		if (e.getSource()==player_2){
 			nbr_player=2;
+			getContentPane().removeAll();
+			getContentPane().add(pan2);
+			validate();
+		}
+		
+		if (e.getSource()==player_4){
+			nbr_player=4;
 			getContentPane().removeAll();
 			getContentPane().add(pan2);
 			validate();

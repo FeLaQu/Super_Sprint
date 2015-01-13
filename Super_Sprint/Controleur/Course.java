@@ -14,8 +14,8 @@ public class Course implements ActionListener {
 
     private Timer timer;
     private static Circuit circuit;
-    private int nbr_player=0; //number of players (1 or 2)
-    private static Car[] cars; // a vector with one or two cars
+    private int nbr_player=0; //number of players (1 or 2 or 4)
+    private static Car[] cars; // a vector with one or two cars or four cars
     private Window window;
     
     private long time_init=System.currentTimeMillis(); // initial time of the race
@@ -52,6 +52,12 @@ public class Course implements ActionListener {
     		cars[1]=new Car(4, circuit.getInit_Position()[1]);
     	}
 		
+    	else if (nbr_player==4){
+    		cars[0]=new Car(1, circuit.getInit_Position()[0]);
+    		cars[1]=new Car(2, circuit.getInit_Position()[1]);
+    		cars[2]=new Car(3, circuit.getInit_Position()[2]);
+    		cars[3]=new Car(4, circuit.getInit_Position()[3]);
+    	}
 		
 		window = new Window(cars, circuit, this);
 	
@@ -101,6 +107,22 @@ public class Course implements ActionListener {
 			
 		}			
 			
+		else if (nbr_player==4){
+			int w0 = view_cars[0].getWidth();
+			int h0 = view_cars[0].getHeight();			
+			int w1 = view_cars[1].getWidth();
+			int h1 = view_cars[1].getHeight();
+			int w2 = view_cars[2].getWidth();
+			int h2 = view_cars[2].getHeight();
+			int w3 = view_cars[3].getWidth();
+			int h3 = view_cars[3].getHeight();
+			
+			cars[0].move(dt0, dn0, circuit, w0, h0);
+			cars[1].move(dt1, dn1, circuit, w1, h1);
+	//		cars[2].move(dt2, dn2, circuit, w2, h2);
+	//		cars[3].move(dt3, dn3, circuit, w3, h3);
+			
+		}	
 		
 		window.repaint();
     }
