@@ -125,6 +125,9 @@ public class Menu extends JFrame implements ActionListener{
 				getContentPane().removeAll();
 				getContentPane().add(pan4);
 			}
+			else if (nbr_player==4){
+				dispose();
+			}
 			validate();
 		}
 
