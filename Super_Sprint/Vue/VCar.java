@@ -31,6 +31,9 @@ public class VCar {
 		else if (car.getID()==2){
 			link="Yellow_car.png";
 		}
+		else if (car.getID()==3){
+			link="avion.png";
+		}
 		try { 	         
 			image = ImageIO.read(new File(link));
 	        } catch (IOException ex) {             
