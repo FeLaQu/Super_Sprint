@@ -42,6 +42,11 @@ public Car(int id, int[] position) {
 		this.acceleration = 0.05 ;
 		this.maneuverability = 1.3 ;
 	}
+	if (id==4){
+		this.max_speed = 4.7 ;
+		this.acceleration = 0.3 ;
+		this.maneuverability = 1.6 ;
+	}
     }
 
 public int getID() {

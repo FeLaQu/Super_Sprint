@@ -48,8 +48,8 @@ public class Course implements ActionListener {
     	}
     	
     	else if (nbr_player==2){    		
-    		cars[0]=new Car(1, circuit.getInit_Position()[0]);
-    		cars[1]=new Car(3, circuit.getInit_Position()[1]);
+    		cars[0]=new Car(3, circuit.getInit_Position()[0]);
+    		cars[1]=new Car(4, circuit.getInit_Position()[1]);
     	}
 		
 		
