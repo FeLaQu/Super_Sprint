@@ -33,10 +33,13 @@ public class Course implements ActionListener {
     	while (menu.isActive()){}
     	int nbr_player=menu.getNbrPlayer();
     	int circuit_id= menu.getCircuitId();
-    	new Course(circuit_id,nbr_player);
+    	int car_ID_onep=menu.getCarIDoneP();
+    	int carone_ID_twop=menu.getCarIDPonetwoP();	
+    	int cartwo_ID_twop=menu.getCarIDPtwotwoP();
+    	new Course(circuit_id,nbr_player,car_ID_onep,carone_ID_twop,cartwo_ID_twop);
     }
 
-    public Course(int  circuit_id, int nbr_player) {     	
+    public Course(int  circuit_id, int nbr_player, int car_ID_onep,int carone_ID_twop,int cartwo_ID_twop) {     	
     	    	   	
     	this.nbr_player=nbr_player;
     	circuit = new Circuit(circuit_id);
@@ -44,12 +47,12 @@ public class Course implements ActionListener {
     	cars= new Car[nbr_player];
     	
     	if (nbr_player==1){    		
-    		cars[0] = new Car(1, circuit.getInit_Position()[0]);
+    		cars[0] = new Car(car_ID_onep, circuit.getInit_Position()[0]);
     	}
     	
     	else if (nbr_player==2){    		
-    		cars[0]=new Car(3, circuit.getInit_Position()[0]);
-    		cars[1]=new Car(4, circuit.getInit_Position()[1]);
+    		cars[0]=new Car(carone_ID_twop, circuit.getInit_Position()[0]);
+    		cars[1]=new Car(cartwo_ID_twop, circuit.getInit_Position()[1]);
     	}
 		
     	else if (nbr_player==4){
