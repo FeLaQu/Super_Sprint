@@ -44,7 +44,7 @@ public class Circuit {
 		else if (id == 2) { // we import here the matrix for the circuit number 2
 			// import matrix of graylevel circuit
 			try {
-				Scanner img = new Scanner(new File("cuircuit8.pgm"));
+				Scanner img = new Scanner(new File("circuit8.pgm"));
 				img.next(); // P2
 				img.next(); // 1200
 				img.next(); // 700

@@ -23,7 +23,7 @@ public class VCircuit {
 			link="out.png";
 		}
 		else if (circuit.getID()==2){
-			link="cuircuit8.png";
+			link="circuit8.png";
 		}
 		
 		try {	         
