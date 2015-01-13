@@ -26,10 +26,10 @@ public class VCar {
 	public VCar(Car car){
 		this.car=car;
 		if (car.getID()==1){
-			link= "C:\\Red_car.png";
+			link= "Red_car.png";
 		}
 		else if (car.getID()==2){
-			link="C:\\Yellow_car.png";
+			link="Yellow_car.png";
 		}
 		try { 	         
 			image = ImageIO.read(new File(link));

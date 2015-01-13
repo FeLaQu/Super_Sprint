@@ -20,10 +20,10 @@ public class VCircuit {
 
 	public VCircuit(Circuit circuit) {
 		if (circuit.getID()==1){
-			link="C://out.png";
+			link="out.png";
 		}
 		else if (circuit.getID()==2){
-			link="C://cuircuit8.png";
+			link="cuircuit8.png";
 		}
 		
 		try {	         
