@@ -2,10 +2,7 @@ package Modele;
 
 public class Car {
 
-	/**
-	 * iu
-	 * 
-	 */
+
 private int ID; // Identification of the car
 
 private int[] position; // A 2x1 vector for the current position

@@ -5,8 +5,14 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+/**
+ * These are the menus that shows up before the race begins :
+ * Select the playing mode, the map and your car.
+ * @author Laurent
+ *
+ */
 public class Menu extends JFrame implements ActionListener{
 
 	private JPanel pan= new JPanel(); // 1, 2 or 4 players
@@ -36,15 +42,25 @@ public class Menu extends JFrame implements ActionListener{
 	private int car_ID_onep=0;	// The ID of the chosen car for 1Player
 	private int carone_ID_twop=0;	// The ID of the car chosen by player 1 in 2P
 	private int cartwo_ID_twop=0;	// The ID of the car chosen by player 2 in 2P
+	private JLabel jeu = new JLabel ("Choix du mode de jeu") ;
+	private JLabel circuit = new JLabel ("Choix du circuit") ;
+	private JLabel voiture1P = new JLabel ("Choix de la voiture") ;
+	private JLabel onevoiture2P = new JLabel ("Choix de la première voiture") ;
+	private JLabel twovoiture2P = new JLabel ("Choix de la deuxième voiture") ;
+
 
 	public Menu(){		
 
 		setTitle("Menu");
 		setVisible(true);
 		setLocationRelativeTo(null);
-		setSize(300,100);	
+		setSize(400,300);	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+
+
+
+		pan.add(jeu);
 		pan.add(player_1);
 		pan.add(player_2);
 		pan.add(player_4);
@@ -54,11 +70,13 @@ public class Menu extends JFrame implements ActionListener{
 		player_2.addActionListener(this);
 		player_4.addActionListener(this);
 
+		pan2.add(circuit);
 		pan2.add(circuit_1);
 		pan2.add(circuit_2);
 		circuit_1.addActionListener(this);
 		circuit_2.addActionListener(this);
 
+		pan3.add(voiture1P);
 		pan3.add(onep_voiture_rouge);
 		pan3.add(onep_voiture_jaune);
 		pan3.add(onep_avion);
@@ -69,6 +87,7 @@ public class Menu extends JFrame implements ActionListener{
 		onep_avion.addActionListener(this);
 		onep_fusee.addActionListener(this);
 
+		pan4.add(onevoiture2P);
 		pan4.add(twop_pone_voiture_rouge);
 		pan4.add(twop_pone_voiture_jaune);
 		pan4.add(twop_pone_avion);
@@ -79,6 +98,7 @@ public class Menu extends JFrame implements ActionListener{
 		twop_pone_avion.addActionListener(this);
 		twop_pone_fusee.addActionListener(this);
 
+		pan5.add(twovoiture2P);
 		pan5.add(twop_ptwo_voiture_rouge);
 		pan5.add(twop_ptwo_voiture_jaune);
 		pan5.add(twop_ptwo_avion);
@@ -212,15 +232,15 @@ public class Menu extends JFrame implements ActionListener{
 	public int getCircuitId(){
 		return circuit_id;
 	}
-	
+
 	public int getCarIDoneP(){
 		return car_ID_onep;	// The ID of the chosen car for 1Player
 	}
-	
+
 	public int getCarIDPonetwoP(){
 		return carone_ID_twop;	// The ID of the car chosen by player 1 in 2P
 	}
-	
+
 	public int getCarIDPtwotwoP(){
 		return cartwo_ID_twop ;
 	}

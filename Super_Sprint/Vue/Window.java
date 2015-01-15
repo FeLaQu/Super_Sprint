@@ -10,6 +10,15 @@ import Controleur.Course;
 import Modele.Car;
 import Modele.Circuit;
 
+/**
+ * This class deals with the window that will opened when a race begins.
+ * It contains a board as argument, and extends JFrame.
+ * The constructor takes the cars[], the circuit and the main course.
+ * After that it is just a few settings,a refresh method,
+ * and the getter for the board.
+ * @author Laurent
+ *
+ */
 
 public class Window extends JFrame {
 	
