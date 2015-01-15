@@ -2,7 +2,10 @@ package Modele;
 
 public class Car {
 
-
+	/**
+	 * iu
+	 * 
+	 */
 private int ID; // Identification of the car
 
 private int[] position; // A 2x1 vector for the current position
@@ -197,30 +200,40 @@ public void move(int dt, int dn, Circuit circuit, int w, int h) {
 
 	// New position of the car
 	int new_posX = position[0] + spX;
-	int new_posY = position[1] + spY;	
+	int new_posY = position[1] + spY;
 	
-	boolean car_inside = new_posX + w / 2 >0 && new_posX + w / 2<1200 &&
-			new_posX - w / 2 >0 && new_posX - w / 2<1200 &&
-			new_posY + h / 2>0 && new_posY + h / 2<700 &&
-			new_posY - h / 2>0 && new_posY - h / 2<700;
+	double cos = Math.abs(Math.cos(getBeta()));
+	double sin = Math.abs(Math.sin(getBeta()));
+	
+	// Here we calculate the position of the four corners of the car
+	int[] top_left= new int[] {new_posX-(int)((w*cos+h*sin)/2)+(int)(w*cos), new_posY-(int)((h*cos+w*sin)/2)}; 
+	int[] top_right= new int[] {new_posX+(int)((w*cos+h*sin)/2), new_posY-(int)((h*cos+w*sin)/2)+(int)(h*cos)};
+	int[] bottom_left= new int[] {new_posX-(int)((w*cos+h*sin)/2), new_posY-(int)((h*cos+w*sin)/2)+(int)(w*sin)};
+	int[] bottom_right= new int[] {new_posX-(int)((w*cos+h*sin)/2)-(int)(w*cos), new_posY+(int)((h*cos+w*sin)/2)};			
+	
+	// car_inside is a boolean to know if the car is inside the window
+	boolean car_inside = top_left[0] >0 && top_left[0]<1200 && bottom_left[0]>0 && bottom_left[0]<1200 &&
+			top_right[0] >0 && top_right[0]<1200 && bottom_right[0]>0 && bottom_right[0]<1200 &&
+			top_left[1]>0 && top_left[1]<700 && bottom_left[1]>0 && bottom_left[1]<700 &&
+			top_right[1]>0 && top_right[1]<700 && bottom_right[1]>0 && bottom_right[1]<700;
 			
-	if (car_inside) {
-		
-	// PROBLEM!
-	// Here we have four positions with each representing the car's four corners.
-	// However, they are not fairly correct because we have ignored the angle of the car's orientation. If the car is not parallel with axis X or Y, it will have some errors.
-	int Car_position_left_top = circuit.getValue(new_posX + w / 2, new_posY + h / 2);
-	int Car_position_right_top = circuit.getValue(new_posX + w / 2, new_posY - h / 2);
-	int Car_position_left_bottom = circuit.getValue(new_posX - w / 2, new_posY + h / 2);
-	int Car_position_right_bottom = circuit.getValue(new_posX - w / 2, new_posY - h / 2);
+			
+	if (car_inside) {		
+	
+	// Here we find the value of the circuit at the four corners	
+	int Circuit_left_top = circuit.getValue(top_left[0], top_left[1]);
+	int Circuit_right_top = circuit.getValue(top_right[0], top_right[1]);
+	int Circuit_left_bottom = circuit.getValue(bottom_left[0], bottom_left[1]);
+	int Circuit_right_bottom = circuit.getValue(bottom_right[0], bottom_right[1]);
 
-	// If the car's four corners are in the speed way, it changes the car's position, if not, speed=0 and it register the orientation
-	if ((Car_position_left_top == 0 && Car_position_right_top == 0 && Car_position_left_bottom == 0 && Car_position_right_bottom == 0)) {
+	// If the car's four corners are in the speed way, it changes the car's position
+	if ((Circuit_left_top == 0 && Circuit_right_top == 0 && Circuit_left_bottom == 0 && Circuit_right_bottom == 0)) {
 	    flag = false;
 	    position[0] = new_posX;
 	    position[1] = new_posY;
 	}
 
+	// If not, speed=0 and it register the orientation
 	} else {
 	    // flag is used in order that orientation does not go to (0,0)
 	    if (!flag) {
