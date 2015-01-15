@@ -60,56 +60,56 @@ public class Menu extends JFrame implements ActionListener{
 
 
 
-		pan.add(jeu);
+		
 		pan.add(player_1);
 		pan.add(player_2);
 		pan.add(player_4);
+		pan.add(jeu);
 		getContentPane().add(pan);
 
 		player_1.addActionListener(this);
 		player_2.addActionListener(this);
 		player_4.addActionListener(this);
 
-		pan2.add(circuit);
+
 		pan2.add(circuit_1);
 		pan2.add(circuit_2);
+		pan2.add(circuit);
 		circuit_1.addActionListener(this);
 		circuit_2.addActionListener(this);
 
-		pan3.add(voiture1P);
+
 		pan3.add(onep_voiture_rouge);
 		pan3.add(onep_voiture_jaune);
 		pan3.add(onep_avion);
 		pan3.add(onep_fusee);
-
+		pan3.add(voiture1P);
 		onep_voiture_rouge.addActionListener(this);
 		onep_voiture_jaune.addActionListener(this);
 		onep_avion.addActionListener(this);
 		onep_fusee.addActionListener(this);
 
-		pan4.add(onevoiture2P);
+
 		pan4.add(twop_pone_voiture_rouge);
 		pan4.add(twop_pone_voiture_jaune);
 		pan4.add(twop_pone_avion);
 		pan4.add(twop_pone_fusee);
-
+		pan4.add(onevoiture2P);
 		twop_pone_voiture_rouge.addActionListener(this);
 		twop_pone_voiture_jaune.addActionListener(this);
 		twop_pone_avion.addActionListener(this);
 		twop_pone_fusee.addActionListener(this);
 
-		pan5.add(twovoiture2P);
+
 		pan5.add(twop_ptwo_voiture_rouge);
 		pan5.add(twop_ptwo_voiture_jaune);
 		pan5.add(twop_ptwo_avion);
 		pan5.add(twop_ptwo_fusee);
-
+		pan5.add(twovoiture2P);
 		twop_ptwo_voiture_rouge.addActionListener(this);
 		twop_ptwo_voiture_jaune.addActionListener(this);
 		twop_ptwo_avion.addActionListener(this);
 		twop_ptwo_fusee.addActionListener(this);
-
-
 	}
 
 	public void actionPerformed(ActionEvent e){	
