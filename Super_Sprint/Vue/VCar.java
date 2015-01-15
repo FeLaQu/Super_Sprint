@@ -50,11 +50,24 @@ public class VCar {
 	}
 	
 	public int getWidth(){
-		return image.getWidth(null);
+		try {
+			Image img = (Image) ImageIO.read(new File(link));
+			return img.getWidth(null);
+		} catch (IOException e) {			
+			e.printStackTrace();
+			return 0;
+		}
+		
 	}
 	
 	public int getHeight(){
-		return image.getHeight(null);
+		try {
+			Image img = (Image) ImageIO.read(new File(link));
+			return img.getHeight(null);
+		} catch (IOException e) {			
+			e.printStackTrace();
+			return 0;
+		}
 	}
 	
 	public void setImage(Image image){
@@ -62,11 +75,11 @@ public class VCar {
 	}
 	
 	public int getX(){		
-		return car.getPosition()[0] - getWidth()/2;	// to center the view of the car around its position	
+		return car.getPosition()[0] - image.getWidth(null)/2;	// to center the view of the car around its position	
 	}
 	
 	public int getY(){		
-		return car.getPosition()[1]- getHeight()/2; // to center the view of the car around its position
+		return car.getPosition()[1]- image.getHeight(null)/2; // to center the view of the car around its position
 	}
 	
 	public static BufferedImage rotate(BufferedImage image, double angle) {
