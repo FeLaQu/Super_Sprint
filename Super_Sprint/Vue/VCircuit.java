@@ -16,10 +16,10 @@ import Modele.Circuit;
  */
 
 public class VCircuit {
-	
+
 	private Image image;
 	private String link;
-	
+
 	public Image getImage(){
 		return image;
 	}
@@ -31,17 +31,17 @@ public class VCircuit {
 		else if (circuit.getID()==2){
 			link="circuit8.png";
 		}
-		
+
 		/**
 		 * First we right the name of the file in the String "link", and then we load
 		 * it  thanks to Image.IO.read : image contains the png picture.
 		 */
-		
+
 		try {	         
 			image = ImageIO.read(new File(link));
-	        } catch (IOException ex) {             
-	            System.out.println(ex);
-	        }
+		} catch (IOException ex) {             
+			System.out.println(ex);
+		}
 	}
 
 }

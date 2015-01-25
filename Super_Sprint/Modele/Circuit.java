@@ -7,14 +7,13 @@ public class Circuit {
 
 	private int ID;
 	private int[][] matrice= new int[1200][700];// x between 0 and 1199 (from left to
-		// right)
-		// y between 0 and 699 (from up to
-		// down)
-	
+	// right)
+	// y between 0 and 699 (from up to down)
+
 	private int[][] init_position; // A 2X2 matrix for the initial position of the two cars
 
 	public Circuit(int id) {
-		
+
 		if (id == 1) { // we import here the matrix for the circuit number 1
 			// import matrix of graylevel circuit
 			try {
@@ -37,7 +36,7 @@ public class Circuit {
 			} catch (Exception yolo) {
 				System.out.println("Ficher non trouve");
 			}
-			
+
 			init_position= new int[][] {{625,100},{625,140}};
 		}
 

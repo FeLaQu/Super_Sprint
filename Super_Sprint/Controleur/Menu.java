@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 /**
  * These are the menus that shows up before the race begins :
  * Select the playing mode, the map and your car.
+ * It is pretty long but not really difficult.
  * @author Laurent
  *
  */
@@ -58,9 +59,6 @@ public class Menu extends JFrame implements ActionListener{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
-
-
-		
 		pan.add(player_1);
 		pan.add(player_2);
 		pan.add(player_4);
@@ -111,6 +109,9 @@ public class Menu extends JFrame implements ActionListener{
 		twop_ptwo_avion.addActionListener(this);
 		twop_ptwo_fusee.addActionListener(this);
 	}
+
+
+
 
 	public void actionPerformed(ActionEvent e){	
 

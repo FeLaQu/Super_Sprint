@@ -114,7 +114,7 @@ public class Course implements ActionListener {
 		}			
 
 		else if (nbr_player==4){
-		//	int w0 = view_cars[0].getWidth();
+			//	int w0 = view_cars[0].getWidth();
 			//int h0 = view_cars[0].getHeight();			
 			//int w1 = view_cars[1].getWidth();
 			//int h1 = view_cars[1].getHeight();
@@ -159,7 +159,7 @@ public class Course implements ActionListener {
 	public int getNbrPlayer(){
 		return nbr_player;
 	}    
-	
+
 	public Car[] getCars(){
 		return this.cars ;
 	}
