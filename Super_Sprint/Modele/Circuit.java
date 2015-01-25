@@ -38,7 +38,7 @@ public class Circuit {
 				System.out.println("Ficher non trouve");
 			}
 			
-			init_position= new int[][] {{625,100},{625,140}};
+			init_position= new int[][] {{400,140},{625,140}};
 		}
 
 		else if (id == 2) { // we import here the matrix for the circuit number 2
@@ -63,7 +63,7 @@ public class Circuit {
 			} catch (Exception yolo2) {
 				System.out.println("Ficher 2 non trouve");
 			}
-			init_position= new int[][] {{600,30},{600,70}};
+			init_position= new int[][] {{510,30},{510,70}};
 		}
 
 
