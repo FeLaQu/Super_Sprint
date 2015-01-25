@@ -9,7 +9,11 @@ import Modele.Car;
 import Modele.Circuit;
 import Vue.VCar;
 import Vue.Window;
-
+/**
+ * This is the main class of the program. The "Course" method creates the cars, the window
+ * and the timer. The "actionPerformed" method makes the cars move at each iteration (in the model) 
+ * and repaint the window (in the view).
+ */
 public class Course implements ActionListener {
 
 	private Timer timer;
@@ -74,7 +78,7 @@ public class Course implements ActionListener {
 			int w = view_cars[0].getWidth();
 			int h = view_cars[0].getHeight();
 
-			cars[0].move(dt0, dn0, circuit, w, h,null); // car.move uses the width and height
+			cars[0].move(dt0, dn0, circuit, w, h,null, 0, 0); // car.move uses the width and height
 			// of view_car to check if the car
 			// gets out of the circuit
 
@@ -104,8 +108,8 @@ public class Course implements ActionListener {
 			int w1 = view_cars[1].getWidth();
 			int h1 = view_cars[1].getHeight();
 
-			cars[0].move(dt0, dn0, circuit, w0, h0,cars[1]);
-			cars[1].move(dt1, dn1, circuit, w1, h1,cars[0]);
+			cars[0].move(dt0, dn0, circuit, w0, h0, cars[1], w1, h1);
+			cars[1].move(dt1, dn1, circuit, w1, h1, cars[0], w0, h0);
 
 		}			
 
