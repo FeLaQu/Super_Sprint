@@ -175,8 +175,5 @@ public class Course implements ActionListener {
 		return nbr_player;
 	}    
 
-	public Car[] getCars(){
-		return this.cars ;
-	}
 
 }
