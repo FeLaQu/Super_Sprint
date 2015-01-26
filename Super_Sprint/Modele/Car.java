@@ -316,6 +316,11 @@ public class Car {
 								flag=false;
 							}
 						}
+						else{
+							position[0] = new_posX;
+							position[1] = new_posY;
+							flag=false;
+						}
 
 
 
