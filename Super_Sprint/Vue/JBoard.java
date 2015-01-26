@@ -128,7 +128,7 @@ public class JBoard extends JPanel {
 		public void keyPressed(KeyEvent e) {
 			int key = e.getKeyCode();
 
-			if (key == KeyEvent.VK_UP) {
+			if (key == KeyEvent.VK_LEFT) {
 				course.setdn0(-1);          
 			}
 

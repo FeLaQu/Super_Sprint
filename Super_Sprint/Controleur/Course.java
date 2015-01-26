@@ -32,6 +32,11 @@ public class Course implements ActionListener {
 	// dt: a move parallel to the speed vector
 	// dn: a move orthogonal to the speed vector
 
+	/**
+	 * The main method launches the menu, gets the parameters chosen by the player
+	 * in the menu and then create a Course object with these parameters.
+	 * After that, all the work is done by Course.
+	 */
 	public static void main(String[] args) {
 		Menu menu = new Menu();
 		while (menu.isActive()){}
@@ -42,6 +47,10 @@ public class Course implements ActionListener {
 		int cartwo_ID_twop=menu.getCarIDPtwotwoP();
 		new Course(circuit_id,nbr_player,car_ID_onep,carone_ID_twop,cartwo_ID_twop);
 	}
+	
+	/**
+	 * The Course constructor creates the cars, the circuit. It then creates a Timer and starts it.
+	 */
 
 	public Course(int  circuit_id, int nbr_player, int car_ID_onep,int carone_ID_twop,int cartwo_ID_twop) {     	
 
@@ -70,6 +79,12 @@ public class Course implements ActionListener {
 		timer = new Timer(10, this);
 		timer.start();
 	}
+	
+	/**
+	 * The "actionPerformed" method is called every 10ms by the Timer. It is the core of the program.
+	 * At each call, it modifies the cars in the model with the method "move" and then call a window.repaint()
+	 * to update the graphics.
+	 */
 
 	public void actionPerformed(ActionEvent evt) {
 		VCar[] view_cars = window.getBoard().getVCar();
