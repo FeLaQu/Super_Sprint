@@ -13,6 +13,14 @@ import Controleur.Course;
 import Modele.Car;
 import Modele.Circuit;
 
+/**
+ * This class is the JPanel object. It is created by "Window" and 
+ * creates the VCar and VCircuit objects.
+ * This class contains the method "paint" which is responsible for refreshing the
+ * window at each iteration.
+ * It also contains the "TAdapter" class which reads the keyboard entries and send it
+ * to "Course".
+ */
 
 public class JBoard extends JPanel {
 
@@ -47,7 +55,9 @@ public class JBoard extends JPanel {
 	}
 
 
-
+	/**
+	 * The following method is the implementation of the "paint" method.
+	 */
 
 	public void paint(Graphics g) {
 		super.paint(g);
@@ -73,6 +83,9 @@ public class JBoard extends JPanel {
 
 	}    
 
+	/**
+	 * The following class reads the keyboard entries. 
+	 */
 
 	private class TAdapter extends KeyAdapter {
 

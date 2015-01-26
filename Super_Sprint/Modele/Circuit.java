@@ -3,6 +3,12 @@ package Modele;
 import java.io.File;
 import java.util.Scanner;
 
+/**
+ * This class codes the model of the circuit. A circuit is represented by a 1200*700 matrix,
+ * each point on the speed way is 0 and each point out is 1. The constructor reads a pgm file
+ * to build the matrix with 0 and 1.
+ */
+
 public class Circuit {
 
 	private int ID;
