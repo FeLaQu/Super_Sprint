@@ -87,11 +87,7 @@ public class VCar {
 	}
 
 	/**
-	 * The following method rotate the image of a car. It then will be aligned with the speed vector by the
-	 * others methods (car.move).
-	 * @param image
-	 * @param angle
-	 * @return
+	 * The following method rotate the image of a car d'un certain angle.
 	 */
 
 	public static BufferedImage rotate(BufferedImage image, double angle) {
@@ -114,6 +110,9 @@ public class VCar {
 		return gd.getDefaultConfiguration();
 	}
 
+	/**
+	 * The method "pivote" updates the image by aligning it with the orientation vector.
+	 */
 	public void pivote(){
 		try { 	         
 			BufferedImage img = ImageIO.read(new File(link));
