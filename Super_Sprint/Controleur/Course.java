@@ -198,7 +198,7 @@ public class Course implements ActionListener {
 			    timer.stop();
 			    window.dispose();
 			    long total_time = (current_time - time_init)/1000;
-			    System.out.println("Car"+p+" has won the rice and its total time is: " + total_time + "s");
+			    System.out.println("Car"+p+" has won the race and its total time is: " + total_time + "s");
 			}
 		    }
 
