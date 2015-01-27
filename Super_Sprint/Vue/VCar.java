@@ -45,7 +45,7 @@ public class VCar {
 		try { 	         
 			image = ImageIO.read(new File(link));
 		} catch (IOException ex) {             
-			System.out.println("Ficher image voiture non trouvé");
+			System.out.println("Ficher image voiture non trouve");
 		}			
 	}
 
