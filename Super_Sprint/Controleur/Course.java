@@ -86,8 +86,6 @@ public class Course implements ActionListener {
 	}
 
 	initPosition = circuit.getInit_Position();
-
-	
 	
 	checkinitPoint = new boolean[nbr_player];
 	car_lap=new int [nbr_player];
@@ -112,19 +110,15 @@ public class Course implements ActionListener {
     }
 
     /**
-     * This method has two functions. One is to counter the timer for each car's one lap. 
-     * Another is aimed to forcing the driver to run some complete laps to win the game. It is kind of anti-cheating.
-     * 
-     * 
      * The "actionPerformed" method is called every 10ms by the Timer. It is the core of the program. At each call, it
      * modifies the cars in the model with the method "move" and then call a window.repaint() to update the graphics.
+     * 
+     * This method has another goal. It is to force the driver to run complete laps to win the game. 
+     * It is kind of an anti-cheating system which works with checkpoints.
      */
 
     public void actionPerformed(ActionEvent evt) {
 	VCar[] view_cars = window.getBoard().getVCar();
-
-//	int[] car_weight = new int[nbr_player];
-//	int[] car_height = new int[nbr_player];
 
 	if (nbr_player == 1) {
 	    int w = view_cars[0].getWidth();
@@ -132,7 +126,7 @@ public class Course implements ActionListener {
 
 	    cars[0].move(dt0, dn0, circuit, w, h, null, 0, 0);
 	    /*
-	     * We define two checkpoint for each circuit. 
+	     * We define two checkpoints for each circuit. 
 	     * One is the initial place of a car the other will be the middle point of Symmetry
 	     * 
 	     * For example, if the initial point is (642,90) then the other is (1200-642, 700-90)
@@ -165,14 +159,6 @@ public class Course implements ActionListener {
 	}
 
 	else if (nbr_player == 2) {
-
-//	    for (int i = 0; i <= nbr_player; i++) {
-//		car_weight[i] = view_cars[i].getWidth();
-//		car_height[i] = view_cars[i].getHeight();
-//
-//	    }
-//	    cars[0].move(dt0, dn0, circuit, car_weight[0], car_height[0], cars[1], car_weight[1], car_height[1]);
-//	    cars[1].move(dt1, dn1, circuit, car_weight[1], car_height[1], cars[0], car_weight[0], car_height[0]);
 	    
 	    int w0 = view_cars[0].getWidth();
 		int h0 = view_cars[0].getHeight();			
@@ -182,7 +168,7 @@ public class Course implements ActionListener {
 		cars[0].move(dt0, dn0, circuit, w0, h0, cars[1], w1, h1);
 		cars[1].move(dt1, dn1, circuit, w1, h1, cars[0], w0, h0);
 
-	    for (int p = 0; p < nbr_player; p++) {
+	    for (int p = 0; p < nbr_player; p++) { // executed 2 times here
 		
 		if (cars[p].getPosition()[0] < x_init) {
 
@@ -198,7 +184,7 @@ public class Course implements ActionListener {
 			    timer.stop();
 			    window.dispose();
 			    long total_time = (current_time - time_init)/1000;
-			    System.out.println("Car"+p+" has won the race and its total time is: " + total_time + "s");
+			    System.out.println("Car "+p+" has won the race and its total time is: " + total_time + "s");
 			}
 		    }
 
@@ -207,7 +193,7 @@ public class Course implements ActionListener {
 		if (cars[p].getPosition()[0] > symPosition[0]) { // if we cross the checkpoint
 		    if (cars[p].getPosition()[1] < (symPosition[1] + 100)
 			    && cars[p].getPosition()[1] > (symPosition[1] - 100)) { // if we cross the start line and we
-			  						    // // crossed the checkpoint
+			  						    // crossed the checkpoint
 			checkinitPoint[p] = true;
 		    }
 		}
@@ -224,10 +210,6 @@ public class Course implements ActionListener {
 
     }
 
-    /*
-     * Propose to merge the following 4 methods into 1 method!!!
-     * 
-     */
     public void setdt0(int x) {
 	dt0 = x;
     }
@@ -243,9 +225,7 @@ public class Course implements ActionListener {
     public void setdn1(int y) {
 	dn1 = y;
     }
-    
-    
-    
+       
     
     
 
